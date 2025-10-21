@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.0
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.0-1758699349
 
 ARG VERSION=2.47.3-1
 
