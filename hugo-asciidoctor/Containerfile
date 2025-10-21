@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.0
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.0-1758699349
 
 ARG HUGO_VERSION=0.152.0
 
