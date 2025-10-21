@@ -1,6 +1,48 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:best-practices"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "goaccess/Containerfile"
+      ],
+      "matchStrings": [
+        "ARG GOACCESS_VERSION=(?<currentValue>.*)$"
+      ],
+      "depNameTemplate": "goaccess/goaccess",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": [
+        "gh-cli/Containerfile"
+      ],
+      "matchStrings": [
+        "ARG VERSION=(?<currentValue>.*)$"
+      ],
+      "depNameTemplate": "cli/cli",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": [
+        "hugo-asciidoctor/Containerfile"
+      ],
+      "matchStrings": [
+        "ARG HUGO_VERSION=(?<currentValue>.*)$"
+      ],
+      "depNameTemplate": "gohugoio/hugo",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": [
+        "release-please/Containerfile"
+      ],
+      "matchStrings": [
+        "ARG VERSION=(?<currentValue>.*)$"
+      ],
+      "depNameTemplate": "googleapis/release-please",
+      "datasourceTemplate": "github-releases"
+    }
   ]
 }
