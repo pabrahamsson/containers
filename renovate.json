@@ -10,7 +10,7 @@
         "/goaccess/Containerfile/"
       ],
       "matchStrings": [
-        "ARG GOACCESS_VERSION=(?<currentValue>.*)$"
+        "ARG GOACCESS_VERSION=(?<currentValue>.*)"
       ],
       "depNameTemplate": "goaccess/goaccess",
       "datasourceTemplate": "github-releases"
@@ -21,7 +21,7 @@
         "/gh-cli/Containerfile/"
       ],
       "matchStrings": [
-        "ARG VERSION=(?<currentValue>.*)$"
+        "ARG VERSION=(?<currentValue>.*)"
       ],
       "depNameTemplate": "cli/cli",
       "datasourceTemplate": "github-releases"
@@ -32,7 +32,7 @@
         "/hugo-asciidoctor/Containerfile/"
       ],
       "matchStrings": [
-        "ARG HUGO_VERSION=(?<currentValue>.*)$"
+        "ARG HUGO_VERSION=(?<currentValue>.*)"
       ],
       "depNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
@@ -43,7 +43,7 @@
         "/release-please/Containerfile/"
       ],
       "matchStrings": [
-        "ARG VERSION=(?<currentValue>.*)$"
+        "ARG VERSION=(?<currentValue>.*)"
       ],
       "depNameTemplate": "googleapis/release-please",
       "datasourceTemplate": "github-releases"
