@@ -1,0 +1,27 @@
+FROM registry.access.redhat.com/ubi10/ubi-minimal:latest as BUILDER
+
+ARG GOACCESS_VERSION=1.9.4
+
+WORKDIR /tmp
+
+RUN microdnf install -y tar gzip make gcc ncurses-devel openssl-devel && \
+    curl -L https://tar.goaccess.io/goaccess-${GOACCESS_VERSION}.tar.gz | tar zxvf - && \
+    cd goaccess-${GOACCESS_VERSION} && \
+    ./configure --enable-utf8 --with-openssl && \
+    make install && \
+    goaccess -V
+
+FROM registry.access.redhat.com/ubi10/ubi-minimal:latest
+
+COPY --from=BUILDER /usr/local/bin /usr/local/bin
+COPY --from=BUILDER /usr/local/share /usr/local/share
+COPY --from=BUILDER /usr/local/etc /usr/local/etc
+COPY --chmod=755 ./startup.sh /usr/local/bin/startup.sh
+
+RUN microdnf install -y procps-ng && \
+    microdnf clean all && \
+    curl -Lo /usr/local/bin/kubectl https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl && \
+    chmod +x /usr/local/bin/kubectl && \
+    kubectl version --client
+
+CMD ["/usr/local/bin/startup.sh"]

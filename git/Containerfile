@@ -1,0 +1,11 @@
+FROM registry.access.redhat.com/ubi10/ubi-minimal
+
+ARG VERSION=2.47.3-1
+
+RUN microdnf upgrade --refresh -y && \
+  microdnf install -y git-$VERSION.el10_0.x86_64 jq && \
+  microdnf clean all && \
+  git version && \
+  jq --version
+
+CMD ["bash"]

@@ -1,0 +1,13 @@
+FROM registry.access.redhat.com/ubi10/ubi-minimal:latest
+
+ARG VERSION=2.82.0
+
+RUN curl -sLo /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo && \
+  microdnf upgrade --refresh -y && \
+  microdnf install -y gh-$VERSION-1.x86_64 jq git && \
+  microdnf clean all && \
+  gh version && \
+  jq --version && \
+  git --version
+
+CMD ["bash"]
