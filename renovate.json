@@ -3,10 +3,11 @@
   "extends": [
     "config:best-practices"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "goaccess/Containerfile"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/goaccess/Containerfile/"
       ],
       "matchStrings": [
         "ARG GOACCESS_VERSION=(?<currentValue>.*)$"
@@ -15,8 +16,9 @@
       "datasourceTemplate": "github-releases"
     },
     {
-      "fileMatch": [
-        "gh-cli/Containerfile"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/gh-cli/Containerfile/"
       ],
       "matchStrings": [
         "ARG VERSION=(?<currentValue>.*)$"
@@ -25,8 +27,9 @@
       "datasourceTemplate": "github-releases"
     },
     {
-      "fileMatch": [
-        "hugo-asciidoctor/Containerfile"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/hugo-asciidoctor/Containerfile/"
       ],
       "matchStrings": [
         "ARG HUGO_VERSION=(?<currentValue>.*)$"
@@ -35,8 +38,9 @@
       "datasourceTemplate": "github-releases"
     },
     {
-      "fileMatch": [
-        "release-please/Containerfile"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/release-please/Containerfile/"
       ],
       "matchStrings": [
         "ARG VERSION=(?<currentValue>.*)$"
