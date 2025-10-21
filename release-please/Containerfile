@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/nodejs-22
+FROM registry.access.redhat.com/ubi10/nodejs-22:10.0
 
 ARG VERSION=17.1.3
 
