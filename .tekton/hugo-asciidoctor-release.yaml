@@ -1,0 +1,40 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: hugo-asciidoctor-release
+  annotations:
+    pipelinesascode.tekton.dev/on-event: "[push]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
+    pipelinesascode.tekton.dev/on-path-change: "[hugo-asciidoctor/**]"
+    pipelinesascode.tekton.dev/max-keep-runs: "5"
+spec:
+  params:
+    - name: repo-url
+      value: "{{ repo_url }}"
+    - name: revision
+      value: "{{ revision }}"
+    - name: image-url
+      value: quay.io/pabrahamsson/hugo-asciidoctor
+    - name: context
+      value: hugo-asciidoctor
+  pipelineRef:
+    params:
+      - name: kind
+        value: pipeline
+      - name: name
+        value: containers-release-pipeline
+      - name: namespace
+        value: container-builds
+    resolver: cluster
+  workspaces:
+    - name: source
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    - name: dockerconfig-ws
+      secret:
+        secretName: quay-io
