@@ -1,11 +1,11 @@
-FROM registry.access.redhat.com/ubi10/nodejs-22:10.0-1761625375@sha256:13cf213d0a697173ddc674e06fd146bc2493666206373bcb815efbddf4e70995
+FROM registry.access.redhat.com/ubi10/nodejs-22-minimal:10.0
 
 ARG VERSION=17.1.3
 
 USER 0
-RUN dnf upgrade --refresh -y && \
-  dnf install -y jq && \
-  dnf clean all -y && \
+RUN microdnf upgrade --refresh -y && \
+  microdnf install -y jq && \
+  microdnf clean all -y && \
   npm i release-please@${VERSION} -g && \
   release-please --version
 
