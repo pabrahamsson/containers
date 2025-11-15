@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi10/ubi-minimal:10.0-1758699349@sha256:649f7ce8082531148ac5e45b61612046a21e36648ab096a77e6ba0c94428cf60
 
-ARG VERSION=2.82.1
+ARG VERSION=2.83.1
 
 RUN curl -sLo /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo && \
   microdnf upgrade --refresh -y && \
