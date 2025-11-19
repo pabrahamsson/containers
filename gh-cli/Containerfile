@@ -2,9 +2,10 @@ FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1762952303@sha256:ebc9604
 
 ARG VERSION=2.83.1
 
-RUN curl -sLo /etc/yum.repos.d/gh-cli.repo https://cli.github.com/packages/rpm/gh-cli.repo && \
-  microdnf upgrade --refresh -y && \
-  microdnf install -y gh-$VERSION-1.x86_64 jq git && \
+RUN  microdnf upgrade --refresh -y && \
+  microdnf install -y jq git && \
+  curl -LO https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.rpm && \
+  rpm -Uvh gh_${VERSION}_linux_amd64.rpm && rm gh_${VERSION}_linux_amd64.rpm && \
   microdnf clean all && \
   gh version && \
   jq --version && \
