@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/nodejs-22-minimal:10.1-1763396814@sha256:0383f73e7880e9ffbde0fba347b79b4a8013fd82c7c2e515799cc81af9672193
+FROM registry.access.redhat.com/ubi10/nodejs-22-minimal:10.1-1764649415@sha256:52f5a9e3eb1191276ef576ad88142a27d4ef61317384f383534526f55761387b
 
 ARG VERSION=17.1.3
 
