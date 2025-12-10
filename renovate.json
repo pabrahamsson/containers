@@ -47,6 +47,17 @@
       ],
       "depNameTemplate": "googleapis/release-please",
       "datasourceTemplate": "github-releases"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/coredns/Containerfile/"
+      ],
+      "matchStrings": [
+        "ARG VERSION=(?<currentValue>.*)"
+      ],
+      "depNameTemplate": "coredns/coredns",
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
