@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1770052085@sha256:380da76bb8a69e333b6c11341d600f5d3aab9ee5b8c95ceb64aae2457f5c1c6e as builder
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1770180557@sha256:a74a7a92d3069bfac09c6882087771fc7db59fa9d8e16f14f4e012fe7288554c as builder
 
 ARG VERSION=1.14.1
 
@@ -6,7 +6,7 @@ RUN microdnf install -y tar gzip && \
   curl -L https://github.com/coredns/coredns/releases/download/v${VERSION}/coredns_${VERSION}_linux_amd64.tgz | tar zxvf - && \
   ls -al coredns
 
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1770052085@sha256:380da76bb8a69e333b6c11341d600f5d3aab9ee5b8c95ceb64aae2457f5c1c6e
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1770180557@sha256:a74a7a92d3069bfac09c6882087771fc7db59fa9d8e16f14f4e012fe7288554c
 
 COPY --from=builder /coredns /usr/local/bin/coredns
 
