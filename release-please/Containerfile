@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi10/nodejs-22-minimal:10.1-1770208072@sha256:4abe19152ea3d2cc56f93f486fe5e8a216fc8ff0bb4a60f564e9627464929e32
 
-ARG VERSION=17.2.1
+ARG VERSION=17.3.0
 
 USER 0
 RUN microdnf upgrade --refresh -y && \
