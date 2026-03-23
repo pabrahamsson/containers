@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1774228210@sha256:c858c2eb5bd336d8c400f6ee976a9d731beccf3351fa7a6f485dced24ae4af17
 
-ARG HUGO_VERSION=0.158.0
+ARG HUGO_VERSION=0.159.0
 
 RUN microdnf upgrade -y && \
     microdnf install -y rubygems ruby-devel gcc-c++ tar && \
