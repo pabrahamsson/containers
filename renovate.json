@@ -59,5 +59,16 @@
       "depNameTemplate": "coredns/coredns",
       "datasourceTemplate": "github-releases"
     }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "github-releases"
+      ],
+      "matchPackageNames": [
+        "googleapis/release-please"
+      ],
+      "minimumReleaseAge": "10 days"
+    }
   ]
 }
