@@ -1,13 +1,24 @@
-FROM registry.access.redhat.com/ubi10/nodejs-24-minimal:10.1-1774831218@sha256:c545cdc9f5dee1a111676f2f27b850ce2e8718f1fee8afe2904120b03c33767b
+# Build stage
+FROM quay.io/hummingbird/nodejs:25-builder AS builder
 
 ARG VERSION=17.3.0
 
-USER 0
-RUN microdnf upgrade --refresh -y && \
-  microdnf install -y jq && \
-  microdnf clean all -y && \
-  npm i release-please@${VERSION} -g && \
-  release-please --version
+# Install jq + deps
+USER root
+RUN dnf install -y jq && \
+  dnf clean all -y
 
-USER 1001
+# Runtime stage
+FROM quay.io/hummingbird/nodejs:25
+
+USER root
+RUN npm i release-please@${VERSION} -g && \
+  release-please --version
+USER ${CONTAINER_DEFAULT_USER}
+
+# Copy jq + deps from builder
+COPY --from=builder /usr/bin/jq /usr/bin/jq
+COPY --from=builder /usr/lib64/libjq* /usr/lib64/
+COPY --from=builder /usr/lib64/libonig* /usr/lib64/
+
 ENTRYPOINT ["release-please"]
