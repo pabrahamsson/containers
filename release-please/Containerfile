@@ -9,7 +9,7 @@ RUN dnf install -y jq && \
   dnf clean all -y
 
 # Runtime stage
-FROM quay.io/hummingbird/nodejs:25@sha256:e810c96e7ab05ef2803976fd2145ccda0fae2119c26f96886818398711aa873b
+FROM quay.io/hummingbird/nodejs:25@sha256:913b529c412128d7ad81ccca4a85329d6cc96e5d4a275c3025dfdf62998cb628
 
 USER root
 RUN npm i release-please@${VERSION} -g && \
