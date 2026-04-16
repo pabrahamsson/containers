@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1776071394@sha256:7fabf2ff42ba1c2b3e4efcdd9ae25de0bce0592edf59151b41e58057b40898ce
 
-ARG VERSION=2.89.0
+ARG VERSION=2.90.0
 
 RUN  microdnf upgrade --refresh -y && \
   microdnf install -y jq git && \
