@@ -1,8 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    "schedule:daily",
+    "security:openssf-scorecard"
   ],
+  "timezone": "America/New_York",
   "customManagers": [
     {
       "customType": "regex",
@@ -58,17 +61,6 @@
       ],
       "depNameTemplate": "coredns/coredns",
       "datasourceTemplate": "github-releases"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchDatasources": [
-        "github-releases"
-      ],
-      "matchPackageNames": [
-        "googleapis/release-please"
-      ],
-      "minimumReleaseAge": "10 days"
     }
   ]
 }
