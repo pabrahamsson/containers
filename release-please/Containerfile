@@ -1,7 +1,7 @@
 # Build stage
 FROM quay.io/hummingbird/nodejs:25-builder@sha256:35fd00d6c4aae4103f9202090aa2f57aa4b3c66b71f630fcd4fc940465183265 AS builder
 
-ARG VERSION=17.3.0
+ARG VERSION=17.6.0
 
 # Install jq + deps
 USER root
