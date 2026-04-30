@@ -1,5 +1,5 @@
 # Build stage
-FROM quay.io/hummingbird/nodejs:25-builder@sha256:d7d88dc66d2143caf72d14ca2b706e3144f809fd8245f6c4b82a994e3e935771 AS builder
+FROM quay.io/hummingbird/nodejs:25-builder@sha256:0a877f59b5295412ca6c926791978fd7318ab28cbd44008d1e032bce06d72e33 AS builder
 
 ARG VERSION=17.6.0
 
