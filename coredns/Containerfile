@@ -1,14 +1,15 @@
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1776834797@sha256:2a4785f399dc7ae2f3ca85f68bac0ccac47f3e73464a47c21e4f7ae46b55a053 as builder
+FROM quay.io/hummingbird/core-runtime:2.42-builder@sha256:f395d4b5a9909a626917831bbffe87988f39e88d91fcb7ff5707beb9ced09f12 AS builder
 
 ARG VERSION=1.14.3
 
-RUN microdnf install -y tar gzip && \
+USER 0
+RUN dnf install -y tar gzip && \
   curl -L https://github.com/coredns/coredns/releases/download/v${VERSION}/coredns_${VERSION}_linux_amd64.tgz | tar zxvf - && \
   ls -al coredns
 
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.1-1776834797@sha256:2a4785f399dc7ae2f3ca85f68bac0ccac47f3e73464a47c21e4f7ae46b55a053
+FROM quay.io/hummingbird/core-runtime:2.42@sha256:0c9a240d8f0e23a113b2aad77b25449fac259a37b9c080e1f6410261e51b1e11
 
-COPY --from=builder /coredns /usr/local/bin/coredns
+COPY --from=builder /tmp/coredns /usr/local/bin/coredns
 
 WORKDIR /etc/coredns
 ENTRYPOINT ["coredns"]
