@@ -1,5 +1,5 @@
 # Build stage
-FROM quay.io/hummingbird/nodejs:25-builder@sha256:f816dbaa97abaf6df5c278a0ad18937ac8e555d13923fd9b33ccf268172f366b AS builder
+FROM quay.io/hummingbird/nodejs:26-builder@sha256:e8508982388a59fb6835cb86706f63174737db41b752ba915e28f5e2fdcd1650 AS builder
 
 ARG VERSION=17.6.0
 
@@ -9,7 +9,7 @@ RUN dnf install -y jq && \
   dnf clean all -y
 
 # Runtime stage
-FROM quay.io/hummingbird/nodejs:25@sha256:251163ca371e196743d2b31d9c34c9e2e45bd91e755ed7a219aabf8d3d61b434
+FROM quay.io/hummingbird/nodejs:26@sha256:400c4cc21bdbda62e5c8670e31810e04f0a9846e13544c7c2355f9ddd8aee581
 
 USER root
 RUN npm i release-please@${VERSION} -g && \
