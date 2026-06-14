@@ -1,4 +1,4 @@
-FROM quay.io/hummingbird/core-runtime:2.42-builder@sha256:197f5435e26db07b1d2f2ee1f380f5ef6b294f7282379c8b6385d2cc7b8a3841 AS builder
+FROM quay.io/hummingbird/core-runtime:2.42-builder@sha256:4d493f157194102de6521c6cebbfe5e394bf3097e56fa97b529aaaf3cc655245 AS builder
 
 ARG VERSION=1.14.4
 
