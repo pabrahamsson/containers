@@ -7,7 +7,7 @@ RUN dnf install -y tar gzip && \
   curl -L https://github.com/coredns/coredns/releases/download/v${VERSION}/coredns_${VERSION}_linux_amd64.tgz | tar zxvf - && \
   ls -al coredns
 
-FROM quay.io/hummingbird/core-runtime:2.42@sha256:dcd72eaa2df901c4915e1eec915906c8787c64b9e4149b4211d4500fbbe71791
+FROM quay.io/hummingbird/core-runtime:2.42@sha256:82ab1238082f405e19e1cc6e4950549371b6742ba6b649ca356c058249162540
 
 COPY --from=builder /tmp/coredns /usr/local/bin/coredns
 
