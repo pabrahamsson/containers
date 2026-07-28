@@ -1,4 +1,4 @@
-FROM quay.io/hummingbird/core-runtime:2.42-builder@sha256:7d05ffb9237e4c493a9f0392c4eff6f5c3a36e3cf7f9a795291dc7dca87d4ace AS builder
+FROM quay.io/hummingbird/core-runtime:2.43-builder@sha256:474f2170a37cccb8a83abea48b2d5f9830fe34aa1f50d553848fe37447e56ef6 AS builder
 
 ARG VERSION=1.14.4
 
@@ -7,7 +7,7 @@ RUN dnf install -y tar gzip && \
   curl -L https://github.com/coredns/coredns/releases/download/v${VERSION}/coredns_${VERSION}_linux_amd64.tgz | tar zxvf - && \
   ls -al coredns
 
-FROM quay.io/hummingbird/core-runtime:2.42@sha256:809fd66403145e6e98be0f8cce601f4fd0a685ff9cd3d11795aa987250d15c42
+FROM quay.io/hummingbird/core-runtime:2.43@sha256:8e597a23a81b65132b7d64d827eb723b035324ec4565ab7aed442540ffbc0841
 
 COPY --from=builder /tmp/coredns /usr/local/bin/coredns
 
