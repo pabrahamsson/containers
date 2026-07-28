@@ -62,5 +62,11 @@
       "depNameTemplate": "coredns/coredns",
       "datasourceTemplate": "github-releases"
     }
+  ],
+  "hostRules": [
+    {
+      "matchHost": "github.com",
+      "token": "{{ secrets.GITHUB_TOKEN }}"
+    }
   ]
 }
