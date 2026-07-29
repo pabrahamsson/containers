@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.2-1782191645@sha256:3948fdfe71007909b37faf48c52eda28bfab7c4e440d6f4d4619422d06ceeb4c as BUILDER
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.2-1785332632@sha256:ceaad73890ea88685eeb1b40a502b7983f2cfac6f1aa10915d1176d51eb90124 as BUILDER
 
 ARG GOACCESS_VERSION=1.9.4
 
@@ -11,7 +11,7 @@ RUN microdnf install -y tar gzip make gcc ncurses-devel openssl-devel && \
     make install && \
     goaccess -V
 
-FROM registry.access.redhat.com/ubi10/ubi-minimal:10.2-1782191645@sha256:3948fdfe71007909b37faf48c52eda28bfab7c4e440d6f4d4619422d06ceeb4c
+FROM registry.access.redhat.com/ubi10/ubi-minimal:10.2-1785332632@sha256:ceaad73890ea88685eeb1b40a502b7983f2cfac6f1aa10915d1176d51eb90124
 
 COPY --from=BUILDER /usr/local/bin /usr/local/bin
 COPY --from=BUILDER /usr/local/share /usr/local/share
