@@ -1,6 +1,6 @@
 FROM quay.io/hummingbird/core-runtime:2.43-builder@sha256:36845f8b5e3a3bca02bea417d61c691b81538d0455b22f592be545783fc8cd05 AS builder
 
-ARG VERSION=1.14.4
+ARG VERSION=1.14.6
 
 USER 0
 RUN dnf install -y tar gzip && \
